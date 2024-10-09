@@ -4,6 +4,7 @@ import { resolve } from 'path'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import vueInspector from 'vite-plugin-vue-inspector'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -28,8 +29,13 @@ export default defineConfig({
       ],  
       dts: 'src/components.d.ts',
     }), 
+    // 点击浏览器的元素时，自动跳转到本地IDE对应位置
+    vueInspector()
   ],
   base: './',
+  build: {
+    target: 'es2015'
+  },
   server: {             
     host: '0.0.0.0',	
     // port: 8080,      
